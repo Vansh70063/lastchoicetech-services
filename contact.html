@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - LastChoiceTech Services</title>
+    <!-- TailWind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#024da1',
+                            lightblue: '#0085ff',
+                            dark: '#0a192f',
+                            orange: '#ff6600',
+                            orangeLight: '#ff8800',
+                            navy: '#051d3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .form-input {
+            background: rgba(5, 12, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #ff6600;
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #051d3b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0085ff;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-[#050c1a] text-gray-200 font-sans antialiased overflow-x-hidden custom-scrollbar">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#050c1a]/90 backdrop-blur-md border-b border-white/5 h-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="LastChoiceTech Logo" class="h-12 w-auto object-contain">
+                <div class="hidden sm:block">
+                    <span class="text-xl font-bold font-display tracking-tight text-white block leading-none">LastChoiceTech</span>
+                    <span class="text-xs font-semibold text-brand-orange uppercase tracking-[0.2em]">S E R V I C E S</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="hover:text-white text-gray-300 font-medium transition-colors">Home</a>
+                <a href="services.html" class="hover:text-white text-gray-300 font-medium transition-colors">Our Services</a>
+                <a href="projects.html" class="hover:text-white text-gray-300 font-medium transition-colors">Projects & Reviews</a>
+                <a href="about.html" class="hover:text-white text-gray-300 font-medium transition-colors">About Us</a>
+                <a href="contact.html" class="text-brand-lightblue font-semibold relative after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[2px] after:bg-brand-lightblue transition-all duration-300">Contact</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="order.html" class="bg-gradient-to-r from-brand-lightblue to-brand-blue text-white px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    Get Started <i class="fa-solid fa-arrow-right text-sm ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#071328] border-b border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-xl">
+            <a href="index.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Home</a>
+            <a href="services.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Our Services</a>
+            <a href="projects.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Projects & Reviews</a>
+            <a href="about.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">About Us</a>
+            <a href="contact.html" class="block py-2.5 px-4 bg-[#0a1f3d] text-brand-lightblue rounded-lg font-semibold">Contact</a>
+            <div class="pt-4 px-4">
+                <a href="order.html" class="w-full text-center block bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white py-3 rounded-lg font-semibold">
+                    Get Started Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Section -->
+    <section class="pt-36 pb-20 bg-gradient-to-b from-[#051d3b] to-[#050c1a] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,133,255,0.08)_0%,transparent_70%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-brand-orange font-bold text-sm uppercase tracking-widest block mb-3" data-aos="fade-up">Get In Touch</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold font-display text-white mb-6" data-aos="fade-up" data-aos-delay="100">
+                Contact Our <span class="text-brand-orange">Consultation Desk</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                Have basic inquiries or pre-sales questions? Send us a quick email message or call us immediately on our verified hotlines.
+            </p>
+        </div>
+    </section>
+
+    <!-- Form and Info Details -->
+    <section class="py-20 bg-[#050c1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Left Details Info (Col 5) -->
+                <div class="lg:col-span-5 space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-extrabold text-white">Direct Support Indices</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        We respond immediately to messages. If you are an enterprise seeking database layouts, dynamic website architecture, or spatial room renders, please call our primary hotline. Students seeking study aid notes can text us on our secondary support line.
+                    </p>
+
+                    <div class="space-y-6">
+                        <!-- Direct corporate line -->
+                        <div class="flex items-start gap-4 bg-white/5 border border-white/5 p-5 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-brand-lightblue/10 text-brand-lightblue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-1">Corporate Hotline</h4>
+                                <a href="tel:+917006328209" class="block text-lg font-black text-white hover:text-brand-lightblue transition-colors">+91 7006328209</a>
+                                <span class="text-xs text-gray-500">Business contracts, spatial design consulting</span>
+                            </div>
+                        </div>
+
+                        <!-- Student line -->
+                        <div class="flex items-start gap-4 bg-white/5 border border-white/5 p-5 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-brand-orange/10 text-brand-orange flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-1">Student & Academic Helpline</h4>
+                                <a href="tel:+919103519800" class="block text-lg font-black text-white hover:text-brand-orange transition-colors">+91 9103519800</a>
+                                <a href="tel:+917051542143" class="block text-lg font-black text-white hover:text-brand-orange transition-colors">+91 7051542143</a>
+                                <span class="text-xs text-gray-500">Assignment formulation, study aids, competitive tests</span>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="flex items-start gap-4 bg-white/5 border border-white/5 p-5 rounded-2xl">
+                            <div class="w-12 h-12 rounded-xl bg-brand-lightblue/10 text-brand-lightblue flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-1">General Correspondence</h4>
+                                <a href="mailto:lastchoicetechservice@gmail.com" class="block text-base font-bold text-white hover:text-brand-lightblue transition-colors break-all">lastchoicetechservice@gmail.com</a>
+                                <span class="text-xs text-gray-500">Official mail responses in under 4 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Form (Col 7) -->
+                <div class="lg:col-span-7 glass-card p-8 rounded-2xl border border-white/5" data-aos="fade-left">
+                    <h3 class="text-xl font-extrabold text-white mb-6">Send A Digital Inquiry</h3>
+                    
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Name *</label>
+                                <input type="text" required placeholder="John Doe" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Email *</label>
+                                <input type="email" required placeholder="john@example.com" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Subject *</label>
+                            <input type="text" required placeholder="Query regarding Website Code or Layouts" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Inquiry Details *</label>
+                            <textarea rows="5" required placeholder="Write your brief message here..." class="w-full form-input px-4 py-3 rounded-xl text-sm"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white font-bold py-4 rounded-xl transition-all shadow-lg shadow-brand-orange/20 text-sm uppercase tracking-wider">
+                            Send Message <i class="fa-solid fa-paper-plane ml-1"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Feedback Overlay -->
+    <div id="contactSuccess" class="fixed inset-0 bg-brand-dark/90 backdrop-blur-md hidden flex items-center justify-center p-4 z-50">
+        <div class="glass-card max-w-sm w-full p-8 rounded-2xl text-center space-y-6">
+            <div class="w-16 h-16 bg-green-500/10 text-green-400 rounded-full flex items-center justify-center text-3xl mx-auto">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold text-white">Message Logged!</h4>
+                <p class="text-xs text-gray-400 mt-2 leading-relaxed">Your message has been processed successfully. We will follow up with you on the registered email address immediately.</p>
+            </div>
+            <button onclick="document.getElementById('contactSuccess').classList.add('hidden')" class="w-full bg-brand-lightblue text-white py-3 rounded-xl text-sm font-bold">
+                Close Panel
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#030914] text-gray-400 border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/5">
+            <!-- Brand Column -->
+            <div class="md:col-span-5 space-y-6">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="images/logo.png" alt="LastChoiceTech Logo Footer" class="h-12 w-auto object-contain">
+                    <div>
+                        <span class="text-lg font-bold font-display tracking-tight text-white block leading-none">LastChoiceTech</span>
+                        <span class="text-[10px] font-semibold text-brand-orange uppercase tracking-[0.2em]">S E R V I C E S</span>
+                    </div>
+                </a>
+                <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+                    LastChoiceTech Services is a premier modern IT and Academic solutions firm. We deliver tailored strategies that boost productivity and business scalability, and provide elite quality student coaching helpers.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://lastchoicetechservices" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-lightblue hover:border-brand-lightblue transition-all duration-300">
+                        <i class="fa-solid fa-globe"></i>
+                    </a>
+                    <a href="https://instagram.com/lastchoicetechservices" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/917006328209" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-green-500 hover:border-green-500 transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Services Navigation -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Quick Services</h4>
+                <ul class="space-y-2.5 text-sm">
+                    <li><a href="services.html#digital" class="hover:text-brand-lightblue transition-colors">Digital Solutions</a></li>
+                    <li><a href="services.html#design" class="hover:text-brand-orange transition-colors">Interior & Spatial Planning</a></li>
+                    <li><a href="services.html#business" class="hover:text-brand-lightblue transition-colors">Business Presentation</a></li>
+                    <li><a href="services.html#students" class="hover:text-brand-orange transition-colors">Academic Notes & Tests</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact/Hotline Info -->
+            <div class="md:col-span-4 space-y-4">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Direct Hotlines</h4>
+                <ul class="space-y-3.5 text-sm">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-brand-lightblue mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">+91 7006328209</span>
+                            <span class="text-xs text-gray-500">Corporate & Business Query Hotline</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-brand-orange mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">+91 9103519800</span>
+                            <span class="text-xs text-gray-500">Student Support Helpline</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-envelope text-brand-lightblue mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">lastchoicetechservice@gmail.com</span>
+                            <span class="text-xs text-gray-500">Official General Correspondence</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <p>&copy; 2026 LastChoiceTech Services. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">Designed, Developed & Delivered with <i class="fa-solid fa-heart text-brand-orange"></i></p>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 80
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Contact submit
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('contactSuccess').classList.remove('hidden');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>

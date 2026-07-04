@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Ordering & Calculation - LastChoiceTech Services</title>
+    <!-- TailWind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#024da1',
+                            lightblue: '#0085ff',
+                            dark: '#0a192f',
+                            orange: '#ff6600',
+                            orangeLight: '#ff8800',
+                            navy: '#051d3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .form-input {
+            background: rgba(5, 12, 26, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .form-input:focus {
+            border-color: #0085ff;
+            outline: none;
+            box-shadow: 0 0 15px rgba(0, 133, 255, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #051d3b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0085ff;
+            border-radius: 4px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-[#050c1a] text-gray-200 font-sans antialiased overflow-x-hidden custom-scrollbar">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#050c1a]/90 backdrop-blur-md border-b border-white/5 h-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="LastChoiceTech Logo" class="h-12 w-auto object-contain">
+                <div class="hidden sm:block">
+                    <span class="text-xl font-bold font-display tracking-tight text-white block leading-none">LastChoiceTech</span>
+                    <span class="text-xs font-semibold text-brand-orange uppercase tracking-[0.2em]">S E R V I C E S</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="hover:text-white text-gray-300 font-medium transition-colors">Home</a>
+                <a href="services.html" class="hover:text-white text-gray-300 font-medium transition-colors">Our Services</a>
+                <a href="projects.html" class="hover:text-white text-gray-300 font-medium transition-colors">Projects & Reviews</a>
+                <a href="about.html" class="hover:text-white text-gray-300 font-medium transition-colors">About Us</a>
+                <a href="contact.html" class="hover:text-white text-gray-300 font-medium transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="order.html" class="bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-brand-orange/20">
+                    Order Panel <i class="fa-solid fa-calculator ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#071328] border-b border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-xl">
+            <a href="index.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Home</a>
+            <a href="services.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Our Services</a>
+            <a href="projects.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Projects & Reviews</a>
+            <a href="about.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">About Us</a>
+            <a href="contact.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Contact</a>
+            <div class="pt-4 px-4">
+                <a href="order.html" class="w-full text-center block bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white py-3 rounded-lg font-semibold">
+                    Order Panel
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Section -->
+    <section class="pt-36 pb-12 bg-gradient-to-b from-[#051d3b] to-[#050c1a] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,102,0,0.06)_0%,transparent_70%)]"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <span class="text-brand-orange font-bold text-sm uppercase tracking-widest block mb-3" data-aos="fade-up">Dynamic Order Form</span>
+            <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mb-4" data-aos="fade-up" data-aos-delay="100">
+                Service Configuration & <span class="text-brand-orange">Interactive Estimator</span>
+            </h1>
+            <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                Configure your service parameters dynamically. Below, adjust pages, delivery urgencies, and additional custom parameters to compute and immediately request your custom budget.
+            </p>
+        </div>
+    </section>
+
+    <!-- Interactive Interactive Service Calculation Engine and Form -->
+    <section class="py-12 bg-[#050c1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Left: Interactive Form (Col 7) -->
+                <div class="lg:col-span-7 glass-card p-6 sm:p-10 rounded-2xl border border-white/5 relative" data-aos="fade-right">
+                    <div class="absolute -top-3 -left-3 bg-brand-orange text-white text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-lg shadow-lg shadow-brand-orange/20">
+                        1. Select Parameters
+                    </div>
+
+                    <form id="orderForm" class="space-y-6 pt-4">
+                        <!-- User details -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Your Name *</label>
+                                <input type="text" id="custName" required placeholder="John Doe" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Email Address *</label>
+                                <input type="email" id="custEmail" required placeholder="john@example.com" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">WhatsApp / Phone No. *</label>
+                                <input type="tel" id="custPhone" required placeholder="+91 XXXXX XXXXX" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">You Are A *</label>
+                                <select id="custType" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                                    <option value="student">Student / Individual</option>
+                                    <option value="business">Business / Corporate</option>
+                                    <option value="retail">Shop / Retailer</option>
+                                    <option value="coaching">Coaching Institute</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Core Service Selection Category -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Service Category *</label>
+                            <select id="serviceCategory" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                                <option value="website-development">Website Development (Digital)</option>
+                                <option value="graphic-editing">Graphic Editing (Digital)</option>
+                                <option value="poster-banner">Poster & Banner Design (Digital)</option>
+                                <option value="visiting-card">Visiting Card Design (Digital)</option>
+                                <option value="tshirt-design">T-Shirt Design (Digital)</option>
+                                <option value="interior">Interior & Room Designing (Design)</option>
+                                <option value="presentation">Presentation Design (Business)</option>
+                                <option value="branding">Business Branding (Business)</option>
+                                <option value="notes">Notes Making (Student Help)</option>
+                                <option value="assignment">Assignment Making (Student Help)</option>
+                                <option value="exam-tests">Competitive Exam Tests (Student Help)</option>
+                                <option value="student-ppt">Presentation Making PPT (Student Help)</option>
+                            </select>
+                        </div>
+
+                        <!-- Quantities / Scales Section (Dynamic labels based on JS) -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6" id="quantitiesContainer">
+                            <div>
+                                <label id="qtyLabel" class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Scope / Scale (No. of Pages/Slides) *</label>
+                                <input type="number" id="qtyInput" min="1" value="5" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Urgency Delivery *</label>
+                                <select id="deliveryUrgency" class="w-full form-input px-4 py-3 rounded-xl text-sm">
+                                    <option value="regular">Regular Delivery (5-7 days)</option>
+                                    <option value="priority">Priority Delivery (3-4 days) (+25%)</option>
+                                    <option value="express">Express 24H Delivery (1 day) (+50%)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Add-ons Checklist -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Additional Specifications & Add-ons</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
+                                <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/5 cursor-pointer text-sm">
+                                    <input type="checkbox" id="addonSEO" class="rounded text-brand-lightblue focus:ring-brand-lightblue h-4 w-4 bg-[#050c1a]">
+                                    <span>Premium SEO / Formatting</span>
+                                </label>
+                                <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/5 cursor-pointer text-sm">
+                                    <input type="checkbox" id="addonSupport" class="rounded text-brand-lightblue focus:ring-brand-lightblue h-4 w-4 bg-[#050c1a]">
+                                    <span>24/7 Dedicated Manager</span>
+                                </label>
+                                <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/5 cursor-pointer text-sm">
+                                    <input type="checkbox" id="addonFastRevisions" class="rounded text-brand-lightblue focus:ring-brand-lightblue h-4 w-4 bg-[#050c1a]">
+                                    <span>Instant revisions package</span>
+                                </label>
+                                <label class="flex items-center gap-3 bg-white/5 hover:bg-white/10 p-3 rounded-xl border border-white/5 cursor-pointer text-sm">
+                                    <input type="checkbox" id="addonSourceFiles" class="rounded text-brand-lightblue focus:ring-brand-lightblue h-4 w-4 bg-[#050c1a]">
+                                    <span>Editable Source Files</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- User Requirements Description Text -->
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">Specific Requirements / Project Scope Description *</label>
+                            <textarea id="projectDetails" rows="4" required placeholder="Explain your design preferences, code needs, academic topics, guidelines or custom parameters..." class="w-full form-input px-4 py-3 rounded-xl text-sm"></textarea>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="w-full bg-gradient-to-r from-brand-orange to-brand-orangeLight hover:shadow-neon-orange text-white text-base font-bold py-4 rounded-xl transition-all duration-300">
+                                Send Order & Requirements <i class="fa-solid fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right: Dynamic Estimator Summary (Col 5) -->
+                <div class="lg:col-span-5 space-y-8" data-aos="fade-left">
+                    <!-- Pricing card summary -->
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl border border-brand-lightblue/20 relative overflow-hidden shadow-2xl">
+                        <!-- Glow -->
+                        <div class="absolute -right-16 -top-16 w-36 h-36 bg-brand-lightblue/10 rounded-full blur-2xl"></div>
+
+                        <h3 class="text-xl font-bold text-white border-b border-white/5 pb-4 mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-wallet text-brand-lightblue"></i> Cost Estimator & Order Summary
+                        </h3>
+
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Selected Service:</span>
+                                <span id="summaryService" class="text-white font-bold">Website Development</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Base Rate:</span>
+                                <span id="summaryBaseRate" class="text-white font-mono">₹1,500 / page</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Scope Scale Quantity:</span>
+                                <span id="summaryQty" class="text-white font-bold">5 Pages</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">Urgency Multiplier:</span>
+                                <span id="summaryUrgency" class="text-white font-bold">1.0x (Regular)</span>
+                            </div>
+                            
+                            <!-- Add-ons active summary list -->
+                            <div class="border-t border-b border-white/5 py-4 my-2">
+                                <span class="text-xs text-gray-500 uppercase tracking-widest block mb-2">Active Add-Ons Selected:</span>
+                                <ul id="summaryAddonsList" class="space-y-1 text-xs text-gray-300">
+                                    <li class="flex justify-between"><span>None</span><span>-</span></li>
+                                </ul>
+                            </div>
+
+                            <!-- Final computed estimate cost -->
+                            <div class="pt-2 flex justify-between items-end">
+                                <div>
+                                    <span class="text-xs text-gray-400 block font-bold uppercase tracking-wider">Estimated Budget Code</span>
+                                    <span class="text-xs text-brand-orange font-semibold italic">(Subject to custom review)</span>
+                                </div>
+                                <div class="text-right">
+                                    <!-- Dynamic Estimated Price Display -->
+                                    <span id="finalEstimatePrice" class="text-3xl sm:text-4xl font-black text-brand-lightblue font-display tracking-tight">₹7,500</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Disclaimer -->
+                        <div class="mt-6 bg-[#040a16] p-4 rounded-xl border border-white/5 text-[11px] text-gray-400 leading-relaxed">
+                            <i class="fa-solid fa-circle-info text-brand-orange mr-1"></i>
+                            <strong>Please Note:</strong> This estimator uses mathematical logic based on parameters. Your final invoice is verified and confirmed with you directly over WhatsApp or Email by our manager to fit custom specifications perfectly.
+                        </div>
+                    </div>
+
+                    <!-- Direct Contact alternative card -->
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl border border-white/5 space-y-4">
+                        <h4 class="text-base font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-comments text-brand-orange"></i> Prefer Quick Setup via WhatsApp?
+                        </h4>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Skip the mathematical estimator form entirely! Click below to open a direct WhatsApp workspace with our consultant. Share your project details directly and we will give you an instant personalized quotation.
+                        </p>
+                        <a href="https://wa.me/917006328209?text=Hello%20LastChoiceTech%20Services!%20I%20want%20to%20discuss%20a%20project%20with%20you." target="_blank" class="w-full text-center block bg-[#25d366] hover:bg-[#20ba59] text-white py-3.5 rounded-xl font-bold transition-all text-sm shadow-lg shadow-green-500/20">
+                            <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Direct Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal Popup -->
+    <div id="successModal" class="fixed inset-0 bg-[#050c1a]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 hidden">
+        <div class="bg-[#0a192f] border border-brand-lightblue/30 rounded-2xl p-8 max-w-md w-full text-center space-y-6 relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-28 h-28 bg-brand-orange/10 rounded-full blur-xl"></div>
+            <div class="w-20 h-20 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-4xl mx-auto shadow-lg shadow-green-500/10">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-white font-display">Requirements Received!</h3>
+                <p id="modalMsg" class="text-sm text-gray-400 mt-2 leading-relaxed">
+                    Thank you, <span id="modalName" class="text-white font-semibold">Client</span>. Your requirement calculation has been processed successfully. An invoice with estimated price has been logged.
+                </p>
+            </div>
+            <div class="bg-[#050c1a] p-4 rounded-xl border border-white/5 space-y-2 text-left text-xs text-gray-300">
+                <div class="flex justify-between"><span>Reference Code:</span><span class="font-mono text-brand-lightblue" id="modalRef">LCT-24017</span></div>
+                <div class="flex justify-between"><span>Estimate Cost:</span><span class="font-bold text-brand-orange" id="modalEstimate">₹7,500</span></div>
+                <div class="flex justify-between"><span>Next Action:</span><span class="text-white">Our manager will ping you via WhatsApp</span></div>
+            </div>
+            <div class="flex gap-4">
+                <button id="closeModalBtn" class="flex-1 bg-white/5 hover:bg-white/10 text-white font-bold py-3 rounded-xl text-sm transition-all">
+                    Close Panel
+                </button>
+                <a id="modalWhatsAppBtn" href="#" target="_blank" class="flex-1 bg-[#25d366] hover:bg-[#20ba59] text-white font-bold py-3 rounded-xl text-sm transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Ping on WA
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#030914] text-gray-400 border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/5">
+            <!-- Brand Column -->
+            <div class="md:col-span-5 space-y-6">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="images/logo.png" alt="LastChoiceTech Logo Footer" class="h-12 w-auto object-contain">
+                    <div>
+                        <span class="text-lg font-bold font-display tracking-tight text-white block leading-none">LastChoiceTech</span>
+                        <span class="text-[10px] font-semibold text-brand-orange uppercase tracking-[0.2em]">S E R V I C E S</span>
+                    </div>
+                </a>
+                <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+                    LastChoiceTech Services is a premier modern IT and Academic solutions firm. We deliver tailored strategies that boost productivity and business scalability, and provide elite quality student coaching helpers.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://lastchoicetechservices" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-lightblue hover:border-brand-lightblue transition-all duration-300">
+                        <i class="fa-solid fa-globe"></i>
+                    </a>
+                    <a href="https://instagram.com/lastchoicetechservices" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/917006328209" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-green-500 hover:border-green-500 transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Services Navigation -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Quick Services</h4>
+                <ul class="space-y-2.5 text-sm">
+                    <li><a href="services.html#digital" class="hover:text-brand-lightblue transition-colors">Digital Solutions</a></li>
+                    <li><a href="services.html#design" class="hover:text-brand-orange transition-colors">Interior & Spatial Planning</a></li>
+                    <li><a href="services.html#business" class="hover:text-brand-lightblue transition-colors">Business Presentation</a></li>
+                    <li><a href="services.html#students" class="hover:text-brand-orange transition-colors">Academic Notes & Tests</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact/Hotline Info -->
+            <div class="md:col-span-4 space-y-4">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Direct Hotlines</h4>
+                <ul class="space-y-3.5 text-sm">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-brand-lightblue mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">+91 7006328209</span>
+                            <span class="text-xs text-gray-500">Corporate & Business Query Hotline</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-brand-orange mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">+91 9103519800</span>
+                            <span class="text-xs text-gray-500">Student Support Helpline</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-envelope text-brand-lightblue mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">lastchoicetechservice@gmail.com</span>
+                            <span class="text-xs text-gray-500">Official General Correspondence</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <p>&copy; 2026 LastChoiceTech Services. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">Designed, Developed & Delivered with <i class="fa-solid fa-heart text-brand-orange"></i></p>
+        </div>
+    </footer>
+
+    <!-- JS Scripts for dynamic calculations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 80
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Service Constants and Rates
+        const serviceRates = {
+            'website-development': { name: 'Website Development', rate: 1500, unit: 'Page', qtyLabel: 'Number of Pages' },
+            'graphic-editing': { name: 'Graphic Editing', rate: 250, unit: 'Asset', qtyLabel: 'Number of Graphics / Images' },
+            'poster-banner': { name: 'Poster & Banner Design', rate: 450, unit: 'Design', qtyLabel: 'Number of Poster / Banner Layouts' },
+            'visiting-card': { name: 'Visiting Card Design', rate: 300, unit: 'Concept', qtyLabel: 'Number of Concepts' },
+            'tshirt-design': { name: 'T-Shirt Design', rate: 400, unit: 'Design', qtyLabel: 'Number of Vector Styles' },
+            'interior': { name: 'Interior & Room Designing', rate: 3000, unit: 'Room', qtyLabel: 'Number of Rooms to Model' },
+            'presentation': { name: 'Presentation Design', rate: 200, unit: 'Slide', qtyLabel: 'Number of Slides' },
+            'branding': { name: 'Business Branding Package', rate: 4500, unit: 'Identity Set', qtyLabel: 'Number of Brands' },
+            'notes': { name: 'Notes Making', rate: 80, unit: 'Page', qtyLabel: 'Number of Book Chapters / Pages' },
+            'assignment': { name: 'Assignment Making', rate: 100, unit: 'Page', qtyLabel: 'Number of Project Pages' },
+            'exam-tests': { name: 'Competitive Exam Tests', rate: 150, unit: 'Practice Set', qtyLabel: 'Number of Sets' },
+            'student-ppt': { name: 'Presentation Making PPT', rate: 120, unit: 'Slide', qtyLabel: 'Number of Academic Slides' }
+        };
+
+        // DOM elements
+        const serviceSelect = document.getElementById('serviceCategory');
+        const qtyLabel = document.getElementById('qtyLabel');
+        const qtyInput = document.getElementById('qtyInput');
+        const deliverySelect = document.getElementById('deliveryUrgency');
+        
+        const summaryService = document.getElementById('summaryService');
+        const summaryBaseRate = document.getElementById('summaryBaseRate');
+        const summaryQty = document.getElementById('summaryQty');
+        const summaryUrgency = document.getElementById('summaryUrgency');
+        const summaryAddonsList = document.getElementById('summaryAddonsList');
+        const finalEstimatePrice = document.getElementById('finalEstimatePrice');
+
+        // Addon checkboxes
+        const addonSEO = document.getElementById('addonSEO');
+        const addonSupport = document.getElementById('addonSupport');
+        const addonFastRevisions = document.getElementById('addonFastRevisions');
+        const addonSourceFiles = document.getElementById('addonSourceFiles');
+
+        // Parse query parameter if coming from services page
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const preselectedService = params.get('service');
+            if (preselectedService && serviceRates[preselectedService]) {
+                serviceSelect.value = preselectedService;
+            }
+            calculateCost();
+        });
+
+        function calculateCost() {
+            const key = serviceSelect.value;
+            const meta = serviceRates[key];
+            const qty = Math.max(1, parseInt(qtyInput.value) || 1);
+            
+            // Adjust label text
+            qtyLabel.textContent = `${meta.qtyLabel} *`;
+
+            // Core subtotal
+            const subtotal = meta.rate * qty;
+
+            // Urgency Multiplier
+            let urgencyMult = 1.0;
+            let urgencyName = 'Regular (1.0x)';
+            if (deliverySelect.value === 'priority') {
+                urgencyMult = 1.25;
+                urgencyName = 'Priority (1.25x)';
+            } else if (deliverySelect.value === 'express') {
+                urgencyMult = 1.5;
+                urgencyName = 'Express 24H (1.50x)';
+            }
+
+            // Add-ons value calculation
+            let addonTotal = 0;
+            let activeAddons = [];
+
+            if (addonSEO.checked) {
+                const seoPrice = key === 'website-development' ? 2500 : 500;
+                addonTotal += seoPrice;
+                activeAddons.push({ name: 'Premium SEO / Formatting', price: seoPrice });
+            }
+            if (addonSupport.checked) {
+                addonTotal += 400;
+                activeAddons.push({ name: '24/7 Dedicated Support', price: 400 });
+            }
+            if (addonFastRevisions.checked) {
+                addonTotal += 300;
+                activeAddons.push({ name: 'Fast Revisions Pack', price: 300 });
+            }
+            if (addonSourceFiles.checked) {
+                const srcPrice = key === 'website-development' || key === 'interior' ? 1500 : 350;
+                addonTotal += srcPrice;
+                activeAddons.push({ name: 'Editable Source Files', price: srcPrice });
+            }
+
+            // Final total logic
+            const total = (subtotal * urgencyMult) + addonTotal;
+
+            // Render details
+            summaryService.textContent = meta.name;
+            summaryBaseRate.textContent = `₹${meta.rate.toLocaleString('en-IN')} / ${meta.unit}`;
+            summaryQty.textContent = `${qty} ${meta.unit}${qty > 1 ? 's' : ''}`;
+            summaryUrgency.textContent = urgencyName;
+
+            // Render addon list
+            summaryAddonsList.innerHTML = '';
+            if (activeAddons.length === 0) {
+                summaryAddonsList.innerHTML = '<li class="flex justify-between text-gray-500"><span>None</span><span>-</span></li>';
+            } else {
+                activeAddons.forEach(addon => {
+                    const li = document.createElement('li');
+                    li.className = 'flex justify-between text-gray-300';
+                    li.innerHTML = `<span><i class="fa-solid fa-circle-plus text-brand-orange mr-1.5 text-[10px]"></i>${addon.name}</span><span>+₹${addon.price.toLocaleString('en-IN')}</span>`;
+                    summaryAddonsList.appendChild(li);
+                });
+            }
+
+            // Render Price tag
+            finalEstimatePrice.textContent = `₹${Math.round(total).toLocaleString('en-IN')}`;
+        }
+
+        // Attach Event Listeners
+        [serviceSelect, qtyInput, deliverySelect, addonSEO, addonSupport, addonFastRevisions, addonSourceFiles].forEach(el => {
+            el.addEventListener('input', calculateCost);
+            el.addEventListener('change', calculateCost);
+        });
+
+        // Form Submit Submission Event
+        const orderForm = document.getElementById('orderForm');
+        const successModal = document.getElementById('successModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalWhatsAppBtn = document.getElementById('modalWhatsAppBtn');
+
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const cName = document.getElementById('custName').value;
+            const cEmail = document.getElementById('custEmail').value;
+            const cPhone = document.getElementById('custPhone').value;
+            const cType = document.getElementById('custType').value;
+            const sName = serviceRates[serviceSelect.value].name;
+            const estPrice = finalEstimatePrice.textContent;
+            const details = document.getElementById('projectDetails').value;
+            const refCode = 'LCT-' + Math.floor(10000 + Math.random() * 90000);
+
+            // Populate Modal
+            document.getElementById('modalName').textContent = cName;
+            document.getElementById('modalEstimate').textContent = estPrice;
+            document.getElementById('modalRef').textContent = refCode;
+
+            // Generate WhatsApp Link dynamically with detailed data!
+            const rawText = `Hello LastChoiceTech Services!%0A` +
+                            `My order request has been configured on the website.%0A%0A` +
+                            `*Order Summary:*%0A` +
+                            `- *Ref Code:* ${refCode}%0A` +
+                            `- *Name:* ${cName}%0A` +
+                            `- *Email:* ${cEmail}%0A` +
+                            `- *WhatsApp:* ${cPhone}%0A` +
+                            `- *Type:* ${cType}%0A` +
+                            `- *Service:* ${sName}%0A` +
+                            `- *Estimated Price:* ${estPrice}%0A` +
+                            `- *Requirements:* ${encodeURIComponent(details)}`;
+            
+            modalWhatsAppBtn.href = `https://wa.me/917006328209?text=${rawText}`;
+
+            // Reveal Modal
+            successModal.classList.remove('hidden');
+        });
+
+        // Close modal and reset form
+        closeModalBtn.addEventListener('click', () => {
+            successModal.classList.add('hidden');
+            orderForm.reset();
+            calculateCost();
+        });
+    </script>
+</body>
+</html>

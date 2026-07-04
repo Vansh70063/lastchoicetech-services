@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - LastChoiceTech Services</title>
+    <!-- TailWind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#024da1',
+                            lightblue: '#0085ff',
+                            dark: '#0a192f',
+                            orange: '#ff6600',
+                            orangeLight: '#ff8800',
+                            navy: '#051d3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 133, 255, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 133, 255, 0.15);
+        }
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #0085ff 0%, #024da1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-orange {
+            background: linear-gradient(135deg, #ff6600 0%, #ff8800 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #051d3b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #0085ff;
+            border-radius: 4px;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-[#050c1a] text-gray-200 font-sans antialiased overflow-x-hidden custom-scrollbar">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-[#050c1a]/90 backdrop-blur-md border-b border-white/5 h-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <img src="images/logo.png" alt="LastChoiceTech Logo" class="h-12 w-auto object-contain">
+                <div class="hidden sm:block">
+                    <span class="text-xl font-bold font-display tracking-tight text-white block leading-none">LastChoiceTech</span>
+                    <span class="text-xs font-semibold text-brand-orange uppercase tracking-[0.2em]">S E R V I C E S</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Menu -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="index.html" class="hover:text-white text-gray-300 font-medium transition-colors">Home</a>
+                <a href="services.html" class="text-brand-lightblue font-semibold relative after:absolute after:bottom-[-6px] after:left-0 after:w-full after:h-[2px] after:bg-brand-lightblue transition-all duration-300">Our Services</a>
+                <a href="projects.html" class="hover:text-white text-gray-300 font-medium transition-colors">Projects & Reviews</a>
+                <a href="about.html" class="hover:text-white text-gray-300 font-medium transition-colors">About Us</a>
+                <a href="contact.html" class="hover:text-white text-gray-300 font-medium transition-colors">Contact</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="order.html" class="bg-gradient-to-r from-brand-lightblue to-brand-blue text-white px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    Get Started <i class="fa-solid fa-arrow-right text-sm ml-1"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#071328] border-b border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-xl">
+            <a href="index.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Home</a>
+            <a href="services.html" class="block py-2.5 px-4 bg-[#0a1f3d] text-brand-lightblue rounded-lg font-semibold">Our Services</a>
+            <a href="projects.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Projects & Reviews</a>
+            <a href="about.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">About Us</a>
+            <a href="contact.html" class="block py-2.5 px-4 hover:bg-white/5 text-gray-300 rounded-lg">Contact</a>
+            <div class="pt-4 px-4">
+                <a href="order.html" class="w-full text-center block bg-gradient-to-r from-brand-orange to-brand-orangeLight text-white py-3 rounded-lg font-semibold">
+                    Get Started Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Header Section -->
+    <section class="pt-36 pb-20 bg-gradient-to-b from-[#051d3b] to-[#050c1a] relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,133,255,0.08)_0%,transparent_70%)]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <span class="text-brand-orange font-bold text-sm uppercase tracking-widest block mb-3" data-aos="fade-up">Elite Portfolios</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold font-display text-white mb-6" data-aos="fade-up" data-aos-delay="100">
+                Explore Our Complete <span class="text-brand-lightblue">Tech Services</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+                Tailored digital growth tools for small businesses, and elite premium research guides, assignment writing and notes creation helpers for academic students. High class delivery is our minimum standard.
+            </p>
+        </div>
+    </section>
+
+    <!-- Category Section 1: Digital Services -->
+    <section id="digital" class="py-20 bg-[#050c1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12 border-b border-white/5 pb-6" data-aos="fade-right">
+                <div class="w-12 h-12 rounded-xl bg-brand-lightblue/10 flex items-center justify-center text-brand-lightblue text-2xl">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Digital Services</h2>
+                    <p class="text-sm text-gray-400">High performance websites, customized online applications and eye-catching banner designs.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Website Development -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Top Choice</span>
+                            <i class="fa-solid fa-laptop-code text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Website Development</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Full-stack highly responsive dynamic websites built with premium frameworks (HTML, CSS, React, JS, Tailwind). Highly optimized for fast load times, accessibility, and modern search engine optimization (SEO).
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING: REPLACE THE INNER TEXT OR ADD VALUE HERE -->
+                            <div class="text-2xl font-black text-white">
+                                <!-- Place custom price code here, e.g. $299 / ₹24,999 -->
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=website-development" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Graphic Editing -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Creative</span>
+                            <i class="fa-solid fa-sliders text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Graphic Editing</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Pro-grade manipulation, layout corrections, transparent vector rendering, background removals, and high-fidelity restoration of digital assets using high-end suites.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING: REPLACE THE INNER TEXT OR ADD VALUE HERE -->
+                            <div class="text-2xl font-black text-white">
+                                <!-- Place custom price code here, e.g. $49 / ₹3,999 -->
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=graphic-editing" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Poster & Banner Design -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Social Tech</span>
+                            <i class="fa-solid fa-palette text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Poster & Banner Design</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Premium high-concept social posters, corporate banner stands, and commercial graphic print designs that perfectly represent your corporate messaging and match company brand styles.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING: REPLACE THE INNER TEXT OR ADD VALUE HERE -->
+                            <div class="text-2xl font-black text-white">
+                                <!-- Place custom price code here -->
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=poster-banner" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visiting Card Design -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Corporate</span>
+                            <i class="fa-solid fa-address-card text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Visiting Card Design</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Ultra-modern sleek double-sided visiting cards, optimized perfectly with digital QR codes mapping to your web portfolio or direct communication networks.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=visiting-card" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- T-Shirt Design -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="500">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Merchandise</span>
+                            <i class="fa-solid fa-shirt text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">T-Shirt Design</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Custom athletic or casual company-branded merchandise vectors, screen-printing and high-definition mockup assets ready for immediate printing manufacturing.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=tshirt-design" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section 2: Design Services -->
+    <section id="design" class="py-20 bg-[#040a16] border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12 border-b border-white/5 pb-6" data-aos="fade-right">
+                <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange text-2xl">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Design & Spatial Services</h2>
+                    <p class="text-sm text-gray-400">High-class spatial planning, room planning, and interior architecture simulation.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Interior & Room Designing -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase tracking-wider">Spatial 3D</span>
+                            <i class="fa-solid fa-couch text-2xl text-brand-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Interior & Room Designing</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Elite residential, corporate, or shop interior styling layouts. Includes high-fidelity 3D modeling, lighting setup, furniture placements, color consultation, and physical blueprint drawings.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=interior" class="w-full text-center block bg-brand-orange/20 hover:bg-brand-orange text-white py-3 rounded-xl font-semibold transition-colors border border-brand-orange/20 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section 3: Business Services -->
+    <section id="business" class="py-20 bg-[#050c1a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12 border-b border-white/5 pb-6" data-aos="fade-right">
+                <div class="w-12 h-12 rounded-xl bg-brand-lightblue/10 flex items-center justify-center text-brand-lightblue text-2xl">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Business Services</h2>
+                    <p class="text-sm text-gray-400">Establish corporate identity, optimize brand layouts, and format professional presentations.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Presentation Design -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Pitch Decks</span>
+                            <i class="fa-solid fa-display text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Presentation Design</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Stunning high-impact presentation slides, investor pitch decks, sales summaries and corporate reporting decks built using PowerPoint, Keynote or custom interactive CSS layers.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=presentation" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Business Branding -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-lightblue bg-brand-lightblue/10 px-3 py-1 rounded-full uppercase tracking-wider">Strategy</span>
+                            <i class="fa-solid fa-gem text-2xl text-brand-lightblue"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Business Branding</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Complete visual asset guide, brand style guides (colors, fonts, usages), corporate stationary models, invoice templates, letterheads, and general business representation assets.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=branding" class="w-full text-center block bg-brand-blue/30 hover:bg-brand-blue text-white py-3 rounded-xl font-semibold transition-colors border border-brand-blue/30 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Section 4: Student Services -->
+    <section id="students" class="py-20 bg-[#040a16] border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-12 border-b border-white/5 pb-6" data-aos="fade-right">
+                <div class="w-12 h-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange text-2xl">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Student & Academic Services</h2>
+                    <p class="text-sm text-gray-400">Premium comprehensive tools designed to elevate student academic performance.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Notes Making -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase tracking-wider">Premium Docs</span>
+                            <i class="fa-solid fa-book-open text-2xl text-brand-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Notes Making</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Highly structured, chapter-by-chapter detailed study materials. Includes simplified flowcharts, formulas, core case studies, step-by-step proofs, and quick revision sheets.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=notes" class="w-full text-center block bg-brand-orange/20 hover:bg-brand-orange text-white py-3 rounded-xl font-semibold transition-colors border border-brand-orange/20 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Assignment Making -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase tracking-wider">Pristine Grades</span>
+                            <i class="fa-solid fa-file-signature text-2xl text-brand-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Assignment Making</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Elite drafting and compilation of school and college-level academic assignment folders. Fully conforming to university guidelines, with complete referencing style guides.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=assignment" class="w-full text-center block bg-brand-orange/20 hover:bg-brand-orange text-white py-3 rounded-xl font-semibold transition-colors border border-brand-orange/20 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Competitive Exam Tests -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="300">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase tracking-wider">Exam Prep</span>
+                            <i class="fa-solid fa-circle-question text-2xl text-brand-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Competitive Exam Tests</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Curated simulation papers, test preparation blueprints, custom question banks, and complete worked-out solution booklets designed to assist student cracking national competitive exams.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=exam-tests" class="w-full text-center block bg-brand-orange/20 hover:bg-brand-orange text-white py-3 rounded-xl font-semibold transition-colors border border-brand-orange/20 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Presentation Making (PPT) -->
+                <div class="glass-card p-8 rounded-2xl flex flex-col justify-between" data-aos="fade-up" data-aos-delay="400">
+                    <div>
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="text-xs font-bold text-brand-orange bg-brand-orange/10 px-3 py-1 rounded-full uppercase tracking-wider">Academic PPT</span>
+                            <i class="fa-solid fa-person-chalkboard text-2xl text-brand-orange"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Presentation Making (PPT)</h3>
+                        <p class="text-sm text-gray-400 mb-6 leading-relaxed">
+                            Interactive slides specifically designed for final term defenses, seminar representations, college reviews, or projects, combining precise visual structures with deep informational charts.
+                        </p>
+                        <!-- Space for pricing -->
+                        <div class="border-t border-white/5 pt-4 mt-6">
+                            <span class="text-xs text-gray-500 uppercase tracking-widest block mb-1">Pricing Guide</span>
+                            <!-- CODE TO ADD PRICING -->
+                            <div class="text-2xl font-black text-white">
+                                <span class="text-brand-orange text-sm font-semibold italic">Contact us for custom pricing code snippet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <a href="order.html?service=student-ppt" class="w-full text-center block bg-brand-orange/20 hover:bg-brand-orange text-white py-3 rounded-xl font-semibold transition-colors border border-brand-orange/20 text-sm">
+                            Configure Service
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#030914] text-gray-400 border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/5">
+            <!-- Brand Column -->
+            <div class="md:col-span-5 space-y-6">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="images/logo.png" alt="LastChoiceTech Logo Footer" class="h-12 w-auto object-contain">
+                    <div>
+                        <span class="text-lg font-bold font-display tracking-tight text-white block leading-none">LastChoiceTech</span>
+                        <span class="text-[10px] font-semibold text-brand-orange uppercase tracking-[0.2em]">S E R V I C E S</span>
+                    </div>
+                </a>
+                <p class="text-sm text-gray-400 max-w-sm leading-relaxed">
+                    LastChoiceTech Services is a premier modern IT and Academic solutions firm. We deliver tailored strategies that boost productivity and business scalability, and provide elite quality student coaching helpers.
+                </p>
+                <div class="flex gap-4">
+                    <a href="https://lastchoicetechservices" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-lightblue hover:border-brand-lightblue transition-all duration-300">
+                        <i class="fa-solid fa-globe"></i>
+                    </a>
+                    <a href="https://instagram.com/lastchoicetechservices" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-brand-orange hover:border-brand-orange transition-all duration-300">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/917006328209" target="_blank" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-green-500 hover:border-green-500 transition-all duration-300">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Services Navigation -->
+            <div class="md:col-span-3 space-y-4">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Quick Services</h4>
+                <ul class="space-y-2.5 text-sm">
+                    <li><a href="#digital" class="hover:text-brand-lightblue transition-colors">Digital Solutions</a></li>
+                    <li><a href="#design" class="hover:text-brand-orange transition-colors">Interior & Spatial Planning</a></li>
+                    <li><a href="#business" class="hover:text-brand-lightblue transition-colors">Business Presentation</a></li>
+                    <li><a href="#students" class="hover:text-brand-orange transition-colors">Academic Notes & Tests</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact/Hotline Info -->
+            <div class="md:col-span-4 space-y-4">
+                <h4 class="text-white font-bold text-sm uppercase tracking-wider">Direct Hotlines</h4>
+                <ul class="space-y-3.5 text-sm">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-brand-lightblue mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">+91 7006328209</span>
+                            <span class="text-xs text-gray-500">Corporate & Business Query Hotline</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-brand-orange mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">+91 9103519800</span>
+                            <span class="text-xs text-gray-500">Student Support Helpline</span>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-envelope text-brand-lightblue mt-1"></i>
+                        <div>
+                            <span class="block text-white font-semibold">lastchoicetechservice@gmail.com</span>
+                            <span class="text-xs text-gray-500">Official General Correspondence</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <p>&copy; 2026 LastChoiceTech Services. All Rights Reserved.</p>
+            <p class="flex items-center gap-1">Designed, Developed & Delivered with <i class="fa-solid fa-heart text-brand-orange"></i></p>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 80
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-2xl';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-2xl';
+            }
+        });
+    </script>
+</body>
+</html>
